@@ -344,30 +344,49 @@
     <div class="container mainpage">
       <div class="row" id="maincontent">
 				<h2 class="page-title" style="margin-left: 0">Calculate Your New Raise</h2>
-				<p>Because union members came together and took action in our worksites, at the capitol, and in our communities, we were able to reach a tentative agreement that included a 10% wage increase for all workers this coming January, a pay scale which will ensure regular wage increases based on the amount of hours you work, and a raised hours cap on overtime—allowing workers a maximum of 20 overtime hours per week. <a href="https://seiu503.org/member_news/19578/">Click here for more information on your 2023 contract.</a></p><p style="padding:20px;background-color:#FFCE04;">If you are not a member, <a href="https://seiu503signup.org?src=2023TACalculator">click here to join</a>. Our union's power to win strong wage increases and to protect our benefits comes from all of us joining together as homecare workers. States where homecare workers have no union have lower wages and worse benefits because workers can’t bargain from a position of strength. So <a href="https://seiu503signup.org?src=2023TACalculatorHCW">join today!</a><p>One of our key wins was a package of cost of living increases (COLAs) and steps that will increase wages by an average of <strong>18.7% over the next two years</strong>. The calculator below will provide you with an estimate of your raise.</p><hr style=width:100%;height:1px;color:#eee;margin-bottom:30px><div id=instructions>
+				<p>Because union members came together and took action in our worksites, at the capitol, and in our communities, we were able to reach a tentative agreement that includes historic cost-of-living adjustments (COLAs), protects our contracting out language, moves us forward on building our union, and a $1,500 one-time payment in our April paychecks (prorated by FTE). <a href="https://seiu503.org/member_news/we-have-a-tentative-agreement/">Click here for more information on our new contract.</a></p>
+ 
+				<p style="padding:20px;background-color:#FFCE04;">Not a member? <a href="https://seiu503signup.org?src=2024HiEdTACalculator">Click here to join today!</a> Our Union's power to win contracts like this comes from all of us joining together as higher education workers! When workers come together and bargain from a position of unity and strength they consistently have higher wages and better benefits. </p>
 
-					<h3 class="center">Enter the number of hours per week that you are currently paid for. </h3>
-					<h3 class="center">Then enter the  number of hours per week you plan to work after the hours cap is increased to 60/week, and click Submit. </h3></div>
-					<hr class="dividerRule"/>
-					<form id=inputForm>
-					<div id=inputs>
-					
-						<div class="inputDiv">
-							<label class="inputLabel"for="hPW" id="hPWLabel">How many hours (on average) are you paid for each week?</label>							
-							<input class="hPW textInput" id="hPW" name="hPW" min="1" max="50" type="number" pattern="[0-9]*" required/>
-							<span id="hPWVal" class="hPWVal valText"></span>
-						</div>
-						
-						<p>Many of us have been working unpaid hours to meet our clients' needs because of the State's hours cap. In our new contract, we won an increase in the hours cap to <strong>60 hours per week</strong>: 40 hours at straight time plus up to 20 hours of overtime per week.</p>
+				<p>One of our key wins was a package of cost-of-living increases (COLAs) and steps that will increase wages for the duration of this contract. <strong>The calculator below will provide you with an estimate of your raises based on the COLAs and any step increases.</strong></p>
 
-						<div class="inputDiv">
-							<label class="inputLabel"for="hPWProj" id="hPWProjLabel">With a new hours cap of 60 per week, how many hours do you plan to work per week?</label>
-							<input class="hPWProj textInput" id="hPWProj" name="hPWProj" min="1" max="60" type="number" pattern="[0-9]*" required/>
-							<span id="hPWProjVal" class="hPWProjVal valText"></span>
-						</div>
+				<hr style=width:100%;height:1px;color:#eee;margin-bottom:30px>
+				<div id=instructions>
+					<h3 class="center">Find your job title and current step in the dropdowns below. </h3>
+					<h3 class="center">Then choose the month you will get your next step increase and click Submit. </h3>
+				</div>
+				<hr class="dividerRule"/>
+				<form id=inputForm><div id=inputs>
+					<div id=classifcationCustom class=custom-select style=width:300px>
+						<label class="cbcontainer inputLabel"for=classification id=classificationLabel>
+							<select class=classification id=classification name=classification required><option value=""> --Your classification-- </select>
+						</label>
 					</div>
-
-					<div class="buttonWrap"><button class="btn button"id="submitButton disabled" type="submit">Submit</button><div id="results"><div id=message class=message></div></div><button class="btn button"id="startOverButton" type="reset" style="display:none;">Start Over</button></div></form><hr style=width:100%;height:1px;color:#eee;margin-bottom:30px><div class="disclaimer"><p>This calculator is an estimate of how your earnings will increase over the life of the new contract. This is an estimate only, for providers who have been working since January 2023 or before. It does not account for providers currently paid above the $17.77 base rate nor does it take into account providers who receive pay differentials or providers who are working as both a PSW and HCW.</p> <p>If you have questions about how the contract affects your pay please contact your organizer. You can find their contact information here: <a href="https://seiu503.org/homecare-and-personal-support-bargaining-2023/">Homecare and Personal Support Bargaining 2023</a> </p></div>
+					<div id=stepCustom class=custom-select style=width:300px>
+						<label class="cbcontainer inputLabel"for=step id=stepLabel>
+							<select class=step id=step name=step required><option value=""> --Your current step-- </select>
+						</label>
+					</div>
+					<div id=monthCustom class=custom-select style=width:300px>
+						<label class="cbcontainer inputLabel"for=month id=monthLabel>
+							<select class=month id=month name=month required><option value=""> --When is your next step?-- </select>
+						</label>
+					</div>
+				</div>
+				<div class=buttonWrap>
+					<button class="btn button"id=submitButton type=submit>Submit</button>
+					<div id=results>
+						<div id=message class=message></div>
+					</div>
+					<button class="btn button"id=startOverButton type=button style="display:none;">Start Over</button>
+				</div>
+				</form>
+				<hr style=width:100%;height:1px;color:#eee;margin-bottom:30px>
+				<div class="disclaimer">
+					<p>This calculator is an estimate of how your earnings will increase over the life of the new contract. This is an estimate only, for providers who have been working since January 2023 or before. It does not account for providers currently paid above the $17.77 base rate nor does it take into account providers who receive pay differentials or providers who are working as both a PSW and HCW.</p> 
+					<p>If you have questions about how the contract affects your pay please contact your organizer. You can find their contact information here: <a href="https://seiu503.org/homecare-and-personal-support-bargaining-2023/">Homecare and Personal Support Bargaining 2023</a> 
+					</p>
+				</div>
       </div> <!-- /row -->
     </div> <!-- container mainpage -->
 

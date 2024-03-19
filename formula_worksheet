@@ -8,8 +8,8 @@ const monthsArray = ["January","February","March","April","May","June","July","A
 M = monthsArray.indexOf(userMOH) + 1 				// numeric value of user-selected month of hire, 1-12
 
 A = # months between now and first step 			// M > 4 ? M - 4 : 9 + M;
-B = # months between second step and June 1 2026 	// M < 6 ? 6 - M : (13 - M) + 5;
-C = # months between third step and June 1 2026 	// F ? 6 - M : 0;
+B = # months between second step and July 1 2026 	// M < 7 ? 7 - M : (13 - M) + 6;
+C = # months between third step and July 1 2026 	// F ? 7 - M : 0;
 
 D = anniversary between November 1 and December 31 	// M >== 11
 E = anniversary between January 1 and March 30 		// M >== 1 && M < 4
@@ -30,7 +30,7 @@ lifeOfContractTotalWithCOLAs =
 		(5 + (13 - M)) 	* s1_COLA2 + 	// first step – June 1 2025 // 6
 		5 				* s1_COLA3 + 	// June 1 – November 1 2025
 		(M - 11) 		* s1_COLA4 + 	// November 1 2025 – second step // 1
-		(5 + (13 - M)) 	* s2_COLA4 		// second step – June 1 2026 // 6	
+		(6 + (13 - M)) 	* s2_COLA4 		// second step – July 1 2026 // 7	
 	}
 	else if (E) { // example: step anniversary is March 1
 		7 				* s0_COLA1 + 	// April 1 – November 1 2024
@@ -38,7 +38,7 @@ lifeOfContractTotalWithCOLAs =
 		(6 - M) 		* s1_COLA2 + 	// first step – June 1 2025 // 3
 		5 				* s2_COLA3 + 	// June 1 – November 1 2025
 		(1 + M) 		* s2_COLA4 + 	// November 1 2025 – second step // 4
-		(6 - M) 		* s3_COLA4 		// second step - June 1 2026 // 3
+		(7 - M) 		* s3_COLA4 		// second step - July 1 2026 // 4
 	}
 	else if (F) { // example: step anniversary is May 1
 		(M - 4) 		* s0_COLA1 + 	// April 1 – first step // 1
@@ -47,7 +47,7 @@ lifeOfContractTotalWithCOLAs =
 		(6 - M) 		* s2_COLA2 + 	// second step – June 1 2025 // 1
 		5 				* s2_COLA3 + 	// June 1 – November 1 2025
 		(1 + M) 		* s2_COLA4 + 	// November 1 2025 – third step // 6
-		(6 - M) 		* s3_COLA4 		// third step - June 1 2026 // 1
+		(7 - M) 		* s3_COLA4 		// third step - July 1 2026 // 2
 	}
 	else if (G) { // example: step anniversary is July 1
 		(M - 4) 		* s0_COLA1 + 	// April 1 – first step // 3
@@ -55,9 +55,9 @@ lifeOfContractTotalWithCOLAs =
 		7 				* s1_COLA2 +	// November 1 2024 – June 1 2025
 		(M - 6) 		* s1_COLA3 + 	// June 1 2025 - second step // 1
 		(11 - M) 		* s2_COLA3 + 	// second step – November 1 2025 // 4
-		7 				* s2_COLA4 + 	// November 1 2025 – June 1 2026
+		8 				* s2_COLA4 + 	// November 1 2025 – July 1 2026
 	}
 
 
-totalValueOfContract = lifeOfContractTotalWithCOLAs - lifeOfContractTotalWithoutCOLAs;  
+totalValueOfContract = lifeOfContractTotalWithCOLAs - lifeOfContractTotalWithoutCOLAs + 1500;  
 

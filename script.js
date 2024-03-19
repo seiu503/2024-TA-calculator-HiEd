@@ -7124,12 +7124,754 @@ const lookup = [
     "Step 10 COLA4": "$4,756"
   }
 ];
+const currentSalaryRange = [
+  {
+    "Salary Range": 6,
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": "",
+    "Step 6": "",
+    "Step 7": "",
+    "Step 8": "",
+    "Step 9": "",
+    "Step 10": 2702
+  },
+  {
+    "Salary Range": 7,
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": "",
+    "Step 6": "",
+    "Step 7": "",
+    "Step 8": "",
+    "Step 9": 2702,
+    "Step 10": 2807
+  },
+  {
+    "Salary Range": 8,
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": "",
+    "Step 6": "",
+    "Step 7": "",
+    "Step 8": 2702,
+    "Step 9": 2807,
+    "Step 10": 2897
+  },
+  {
+    "Salary Range": "8B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": "",
+    "Step 6": "",
+    "Step 7": "",
+    "Step 8": 2702,
+    "Step 9": 2807,
+    "Step 10": 2897
+  },
+  {
+    "Salary Range": 9,
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": "",
+    "Step 6": "",
+    "Step 7": 2702,
+    "Step 8": 2807,
+    "Step 9": 2897,
+    "Step 10": 3022
+  },
+  {
+    "Salary Range": "9B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": "",
+    "Step 6": "",
+    "Step 7": 2702,
+    "Step 8": 2807,
+    "Step 9": 2897,
+    "Step 10": 3022
+  },
+  {
+    "Salary Range": 10,
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": "",
+    "Step 6": 2702,
+    "Step 7": 2807,
+    "Step 8": 2897,
+    "Step 9": 3022,
+    "Step 10": 3140
+  },
+  {
+    "Salary Range": 11,
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 2702,
+    "Step 6": 2807,
+    "Step 7": 2897,
+    "Step 8": 3022,
+    "Step 9": 3140,
+    "Step 10": 3279
+  },
+  {
+    "Salary Range": "11B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 2702,
+    "Step 6": 2807,
+    "Step 7": 2897,
+    "Step 8": 3022,
+    "Step 9": 3140,
+    "Step 10": 3279
+  },
+  {
+    "Salary Range": 12,
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": 2702,
+    "Step 5": 2807,
+    "Step 6": 2897,
+    "Step 7": 3022,
+    "Step 8": 3140,
+    "Step 9": 3279,
+    "Step 10": 3418
+  },
+  {
+    "Salary Range": "12B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 2807,
+    "Step 6": 2897,
+    "Step 7": 3022,
+    "Step 8": 3140,
+    "Step 9": 3279,
+    "Step 10": 3418
+  },
+  {
+    "Salary Range": 13,
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": 2702,
+    "Step 4": 2807,
+    "Step 5": 2897,
+    "Step 6": 3022,
+    "Step 7": 3140,
+    "Step 8": 3279,
+    "Step 9": 3418,
+    "Step 10": 3574
+  },
+  {
+    "Salary Range": "13B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 2897,
+    "Step 6": 3022,
+    "Step 7": 3140,
+    "Step 8": 3279,
+    "Step 9": 3418,
+    "Step 10": 3574
+  },
+  {
+    "Salary Range": 14,
+    "Step 1": "",
+    "Step 2": 2702,
+    "Step 3": 2807,
+    "Step 4": 2897,
+    "Step 5": 3022,
+    "Step 6": 3140,
+    "Step 7": 3279,
+    "Step 8": 3418,
+    "Step 9": 3574,
+    "Step 10": 3741
+  },
+  {
+    "Salary Range": "14B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 3022,
+    "Step 6": 3140,
+    "Step 7": 3279,
+    "Step 8": 3418,
+    "Step 9": 3574,
+    "Step 10": 3741
+  },
+  {
+    "Salary Range": 15,
+    "Step 1": 2702,
+    "Step 2": 2807,
+    "Step 3": 2897,
+    "Step 4": 3022,
+    "Step 5": 3140,
+    "Step 6": 3279,
+    "Step 7": 3418,
+    "Step 8": 3574,
+    "Step 9": 3741,
+    "Step 10": 3921
+  },
+  {
+    "Salary Range": "15B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 3140,
+    "Step 6": 3279,
+    "Step 7": 3418,
+    "Step 8": 3574,
+    "Step 9": 3741,
+    "Step 10": 3921
+  },
+  {
+    "Salary Range": 16,
+    "Step 1": 2807,
+    "Step 2": 2897,
+    "Step 3": 3022,
+    "Step 4": 3140,
+    "Step 5": 3279,
+    "Step 6": 3418,
+    "Step 7": 3574,
+    "Step 8": 3741,
+    "Step 9": 3921,
+    "Step 10": 4107
+  },
+  {
+    "Salary Range": "16B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 3279,
+    "Step 6": 3418,
+    "Step 7": 3574,
+    "Step 8": 3741,
+    "Step 9": 3921,
+    "Step 10": 4107
+  },
+  {
+    "Salary Range": 17,
+    "Step 1": 2897,
+    "Step 2": 3022,
+    "Step 3": 3140,
+    "Step 4": 3279,
+    "Step 5": 3418,
+    "Step 6": 3574,
+    "Step 7": 3741,
+    "Step 8": 3921,
+    "Step 9": 4107,
+    "Step 10": 4303
+  },
+  {
+    "Salary Range": "17B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 3418,
+    "Step 6": 3574,
+    "Step 7": 3741,
+    "Step 8": 3921,
+    "Step 9": 4107,
+    "Step 10": 4303
+  },
+  {
+    "Salary Range": "17T",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 3524,
+    "Step 6": 3695,
+    "Step 7": 3866,
+    "Step 8": 4059,
+    "Step 9": 4263,
+    "Step 10": 4470
+  },
+  {
+    "Salary Range": 18,
+    "Step 1": 3022,
+    "Step 2": 3140,
+    "Step 3": 3279,
+    "Step 4": 3418,
+    "Step 5": 3574,
+    "Step 6": 3741,
+    "Step 7": 3921,
+    "Step 8": 4107,
+    "Step 9": 4303,
+    "Step 10": 4507
+  },
+  {
+    "Salary Range": "18B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 3574,
+    "Step 6": 3741,
+    "Step 7": 3921,
+    "Step 8": 4107,
+    "Step 9": 4303,
+    "Step 10": 4507
+  },
+  {
+    "Salary Range": "18T",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 3695,
+    "Step 6": 3866,
+    "Step 7": 4059,
+    "Step 8": 4263,
+    "Step 9": 4470,
+    "Step 10": 4673
+  },
+  {
+    "Salary Range": 19,
+    "Step 1": 3140,
+    "Step 2": 3279,
+    "Step 3": 3418,
+    "Step 4": 3574,
+    "Step 5": 3741,
+    "Step 6": 3921,
+    "Step 7": 4107,
+    "Step 8": 4303,
+    "Step 9": 4507,
+    "Step 10": 4733
+  },
+  {
+    "Salary Range": "19B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 3741,
+    "Step 6": 3921,
+    "Step 7": 4107,
+    "Step 8": 4303,
+    "Step 9": 4507,
+    "Step 10": 4733
+  },
+  {
+    "Salary Range": "19T",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 3866,
+    "Step 6": 4059,
+    "Step 7": 4263,
+    "Step 8": 4470,
+    "Step 9": 4673,
+    "Step 10": 4895
+  },
+  {
+    "Salary Range": 20,
+    "Step 1": 3279,
+    "Step 2": 3418,
+    "Step 3": 3574,
+    "Step 4": 3741,
+    "Step 5": 3921,
+    "Step 6": 4107,
+    "Step 7": 4303,
+    "Step 8": 4507,
+    "Step 9": 4733,
+    "Step 10": 4956
+  },
+  {
+    "Salary Range": "20B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 3921,
+    "Step 6": 4107,
+    "Step 7": 4303,
+    "Step 8": 4507,
+    "Step 9": 4733,
+    "Step 10": 4956
+  },
+  {
+    "Salary Range": 21,
+    "Step 1": 3418,
+    "Step 2": 3574,
+    "Step 3": 3741,
+    "Step 4": 3921,
+    "Step 5": 4107,
+    "Step 6": 4303,
+    "Step 7": 4507,
+    "Step 8": 4733,
+    "Step 9": 4956,
+    "Step 10": 5193
+  },
+  {
+    "Salary Range": "21B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 4107,
+    "Step 6": 4303,
+    "Step 7": 4507,
+    "Step 8": 4733,
+    "Step 9": 4956,
+    "Step 10": 5193
+  },
+  {
+    "Salary Range": "21I",
+    "Step 1": 2791,
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": "",
+    "Step 6": "",
+    "Step 7": "",
+    "Step 8": "",
+    "Step 9": "",
+    "Step 10": 5425
+  },
+  {
+    "Salary Range": "21T",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 4255,
+    "Step 6": 4453,
+    "Step 7": 4666,
+    "Step 8": 4896,
+    "Step 9": 5142,
+    "Step 10": 5386
+  },
+  {
+    "Salary Range": 22,
+    "Step 1": 3574,
+    "Step 2": 3741,
+    "Step 3": 3921,
+    "Step 4": 4107,
+    "Step 5": 4303,
+    "Step 6": 4507,
+    "Step 7": 4733,
+    "Step 8": 4956,
+    "Step 9": 5193,
+    "Step 10": 5442
+  },
+  {
+    "Salary Range": "22B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 4303,
+    "Step 6": 4507,
+    "Step 7": 4733,
+    "Step 8": 4956,
+    "Step 9": 5193,
+    "Step 10": 5442
+  },
+  {
+    "Salary Range": 23,
+    "Step 1": 3741,
+    "Step 2": 3921,
+    "Step 3": 4107,
+    "Step 4": 4303,
+    "Step 5": 4507,
+    "Step 6": 4733,
+    "Step 7": 4956,
+    "Step 8": 5193,
+    "Step 9": 5442,
+    "Step 10": 5709
+  },
+  {
+    "Salary Range": "23B",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 4507,
+    "Step 6": 4733,
+    "Step 7": 4956,
+    "Step 8": 5193,
+    "Step 9": 5442,
+    "Step 10": 5709
+  },
+  {
+    "Salary Range": 24,
+    "Step 1": 3921,
+    "Step 2": 4107,
+    "Step 3": 4303,
+    "Step 4": 4507,
+    "Step 5": 4733,
+    "Step 6": 4956,
+    "Step 7": 5193,
+    "Step 8": 5442,
+    "Step 9": 5709,
+    "Step 10": 5992
+  },
+  {
+    "Salary Range": "24T",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 4879,
+    "Step 6": 5106,
+    "Step 7": 5354,
+    "Step 8": 5632,
+    "Step 9": 5915,
+    "Step 10": 6203
+  },
+  {
+    "Salary Range": 25,
+    "Step 1": 4107,
+    "Step 2": 4303,
+    "Step 3": 4507,
+    "Step 4": 4733,
+    "Step 5": 4956,
+    "Step 6": 5193,
+    "Step 7": 5442,
+    "Step 8": 5709,
+    "Step 9": 5992,
+    "Step 10": 6286
+  },
+  {
+    "Salary Range": "25T",
+    "Step 1": "",
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": 5106,
+    "Step 6": 5354,
+    "Step 7": 5632,
+    "Step 8": 5915,
+    "Step 9": 6203,
+    "Step 10": 6495
+  },
+  {
+    "Salary Range": 26,
+    "Step 1": 4303,
+    "Step 2": 4507,
+    "Step 3": 4733,
+    "Step 4": 4956,
+    "Step 5": 5193,
+    "Step 6": 5442,
+    "Step 7": 5709,
+    "Step 8": 5992,
+    "Step 9": 6286,
+    "Step 10": 6587
+  },
+  {
+    "Salary Range": "26I",
+    "Step 1": 2968,
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": "",
+    "Step 6": "",
+    "Step 7": "",
+    "Step 8": "",
+    "Step 9": "",
+    "Step 10": 6845
+  },
+  {
+    "Salary Range": 27,
+    "Step 1": 4507,
+    "Step 2": 4733,
+    "Step 3": 4956,
+    "Step 4": 5193,
+    "Step 5": 5442,
+    "Step 6": 5709,
+    "Step 7": 5992,
+    "Step 8": 6286,
+    "Step 9": 6587,
+    "Step 10": 6913
+  },
+  {
+    "Salary Range": 28,
+    "Step 1": 4733,
+    "Step 2": 4956,
+    "Step 3": 5193,
+    "Step 4": 5442,
+    "Step 5": 5709,
+    "Step 6": 5992,
+    "Step 7": 6286,
+    "Step 8": 6587,
+    "Step 9": 6913,
+    "Step 10": 7247
+  },
+  {
+    "Salary Range": "28I",
+    "Step 1": 2794,
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": "",
+    "Step 6": "",
+    "Step 7": "",
+    "Step 8": "",
+    "Step 9": "",
+    "Step 10": 7422
+  },
+  {
+    "Salary Range": 29,
+    "Step 1": 4956,
+    "Step 2": 5193,
+    "Step 3": 5442,
+    "Step 4": 5709,
+    "Step 5": 5992,
+    "Step 6": 6286,
+    "Step 7": 6587,
+    "Step 8": 6913,
+    "Step 9": 7247,
+    "Step 10": 7601
+  },
+  {
+    "Salary Range": 30,
+    "Step 1": 5193,
+    "Step 2": 5442,
+    "Step 3": 5709,
+    "Step 4": 5992,
+    "Step 5": 6286,
+    "Step 6": 6587,
+    "Step 7": 6913,
+    "Step 8": 7247,
+    "Step 9": 7601,
+    "Step 10": 7968
+  },
+  {
+    "Salary Range": 31,
+    "Step 1": 5442,
+    "Step 2": 5709,
+    "Step 3": 5992,
+    "Step 4": 6286,
+    "Step 5": 6587,
+    "Step 6": 6913,
+    "Step 7": 7247,
+    "Step 8": 7601,
+    "Step 9": 7968,
+    "Step 10": 8365
+  },
+  {
+    "Salary Range": 32,
+    "Step 1": 5709,
+    "Step 2": 5992,
+    "Step 3": 6286,
+    "Step 4": 6587,
+    "Step 5": 6913,
+    "Step 6": 7247,
+    "Step 7": 7601,
+    "Step 8": 7968,
+    "Step 9": 8365,
+    "Step 10": 8765
+  },
+  {
+    "Salary Range": "32I",
+    "Step 1": 3362,
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": "",
+    "Step 6": "",
+    "Step 7": "",
+    "Step 8": "",
+    "Step 9": "",
+    "Step 10": 9019
+  },
+  {
+    "Salary Range": 33,
+    "Step 1": 5992,
+    "Step 2": 6286,
+    "Step 3": 6587,
+    "Step 4": 6913,
+    "Step 5": 7247,
+    "Step 6": 7601,
+    "Step 7": 7968,
+    "Step 8": 8365,
+    "Step 9": 8765,
+    "Step 10": 9185
+  },
+  {
+    "Salary Range": 34,
+    "Step 1": 6286,
+    "Step 2": 6587,
+    "Step 3": 6913,
+    "Step 4": 7247,
+    "Step 5": 7601,
+    "Step 6": 7968,
+    "Step 7": 8365,
+    "Step 8": 8765,
+    "Step 9": 9185,
+    "Step 10": 9624
+  },
+  {
+    "Salary Range": "34I",
+    "Step 1": 3677,
+    "Step 2": "",
+    "Step 3": "",
+    "Step 4": "",
+    "Step 5": "",
+    "Step 6": "",
+    "Step 7": "",
+    "Step 8": "",
+    "Step 9": "",
+    "Step 10": 9844
+  },
+  {
+    "Salary Range": 35,
+    "Step 1": 6587,
+    "Step 2": 6913,
+    "Step 3": 7247,
+    "Step 4": 7601,
+    "Step 5": 7968,
+    "Step 6": 8365,
+    "Step 7": 8765,
+    "Step 8": 9185,
+    "Step 9": 9624,
+    "Step 10": 10081
+  },
+  {
+    "Salary Range": 36,
+    "Step 1": 6913,
+    "Step 2": 7247,
+    "Step 3": 7601,
+    "Step 4": 7968,
+    "Step 5": 8365,
+    "Step 6": 8765,
+    "Step 7": 9185,
+    "Step 8": 9624,
+    "Step 9": 10081,
+    "Step 10": 10560
+  }
+]
 
 // set global variables
-let userTitle = "";
-let userStep = "";
-let numberOfCOLAs = 0;
-let numberOfSteps = 0;
+let userTitle = '';
+let userStartStep = '';
+let userMOH = '';
 let lifeOfContractTotal = 0;
 let userObj = {};
 let itPos = false;
@@ -7174,14 +7916,14 @@ document.addEventListener("DOMContentLoaded", function(){
   // listen for changes to step
   function stepChange(e) {
     console.log('stepChange');
-    let userStartStep = e.target.value;
+    userStartStep = e.target.value;
     console.log(`userStartStep: ${userStartStep}`);
   }
 
   // listen for changes to MOH
   function MOHChange(e) {
     console.log('MOHChange');
-    let userMOH = e.target.value;
+    userMOH = e.target.value;
     console.log(`userMOH: ${userMOH}`);
   }
 
@@ -7194,41 +7936,139 @@ document.addEventListener("DOMContentLoaded", function(){
     }
   };
 
+  // extract a number from a step string
+  const r = /\d+/;
+  const stepNumberEquivalent = (stepString) => (stepString.match(r));
+  console.log(`stepNumberEquivalent: ${stepNumberEquivalent}`);
+
+  // ---* calculate lOC total *--- //
+
+  // calculate steps
+  const s0 = stepNumberEquivalent(userStartStep);  
+  const s1 = s0 + 1 <= 10 ? ss + 1 : 10;
+  const s2 = s1 + 1 <= 10 ? s1 + 1 : 10;
+  const s3 = s2 + 1 <= 10 ? s2 + 1 : 10;
+  console.log(`s0: ${s0}, s1: ${s1}, s2: ${s2}, s3: ${s3}`);
+
+  const monthsArray = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+  const M = monthsArray.indexOf(userMOH) + 1;        // numeric value of user-selected month of hire, 1-12
+  console.log(`userMOH: ${M}`);
+
+  // set anniversary date condition
+  const D = M >= 11; // anniversary between November 1 and December 31
+  const E = M >= 1 && M < 4; // anniversary between January 1 and March 30
+  const F = M >= 4 && M < 6; // anniversary between April 1 and May 31
+  const G = M == 6; // anniversary date in June
+  const H = M > 6 && M < 11; // anniversary between July 1 and October 31
+  console.log(`D: ${D}, E: ${E}, F: ${F}, G: ${G}, H: ${H}`);
+
+  // calculate months between steps and COLAs based on user MOH
+  const A = M > 4 ? M - 4 : 9 + M; // # months between now and first step
+  console.log(`# months between now and first step: ${A}`);
+  const B = M < 7 ? 7 - M : (13 - M) + 6; // # months between second step and July 1 2026
+  console.log(`# months between second step and July 1 2026: ${B}`);
+  const C = F ? 7 - M : 0; // # months between third step and July 1 2026
+  console.log(`# months between third step and July 1 2026: ${C}`);
+
+  // calculate monthly rate at each step without COLAs
+
+  // find user object in currentSalaryRange by SalaryRange
+  const userSalaryRange = userObj['salaryRange'];
+  console.log(`userSalaryRange: ${userSalaryRange}`);
+
+  const userCurrentSalaryObj = currentSalaryRange.find(item => item['Salary Range'].toString() === userSalaryRange.toString());
+  console.log(userCurrentSalaryObj);
+
+  const I = userCurrentSalaryObj[`Step ${s1}`]; // monthly rate at s1 (baseline without COLAs)
+  const J = userCurrentSalaryObj[`Step ${s2}`]; // monthly rate at s2 (baseline without COLAs)
+  const K = userCurrentSalaryObj[`Step ${s3}`]; // monthly rate at s3 (baseline without COLAs)
+  console.log(`monthly rate at s1: ${I}`);
+  console.log(`monthly rate at s2: ${J}`);
+  console.log(`monthly rate at s3: ${K}`);
+
+
+  const lifeOfContractTotalWithoutCOLAS = (currentMonthlyRate * A) + (I * 12) + (J * B) + (K * C);
+  console.log(`lifeOfContractTotalWithoutCOLAS: ${lifeOfContractTotalWithoutCOLAS}`);
+
+  let lifeOfContractTotalWithCOLAs = 0;
+
+  if (D) { // example: step anniversary is December 1
+      console.log(`case D`);
+      lifeOfContractTotalWithCOLAs =
+      7               * s0_COLA1 +  // April 1 – November 1 2024
+      (M - 11)        * s0_COLA2 +  // November 1 2024 – first step // 1
+      (5 + (13 - M))  * s1_COLA2 +  // first step – June 1 2025 // 6
+      5               * s1_COLA3 +  // June 1 – November 1 2025
+      (M - 11)        * s1_COLA4 +  // November 1 2025 – second step // 1
+      (6 + (13 - M))  * s2_COLA4    // second step – July 1 2026 // 7 
+    }
+    else if (E) { // example: step anniversary is March 1
+      console.log(`case E`);
+      lifeOfContractTotalWithCOLAs =
+      7         * s0_COLA1 +  // April 1 – November 1 2024
+      (1 + M)   * s0_COLA2 +  // November 1 2024 – first step // 4
+      (6 - M)   * s1_COLA2 +  // first step – June 1 2025 // 3
+      5         * s2_COLA3 +  // June 1 – November 1 2025
+      (1 + M)   * s2_COLA4 +  // November 1 2025 – second step // 4
+      (7 - M)   * s3_COLA4    // second step - July 1 2026 // 4
+    }
+    else if (F) { // example: step anniversary is May 1
+      console.log(`case F`);
+      lifeOfContractTotalWithCOLAs =
+      (M - 4)   * s0_COLA1 +  // April 1 – first step // 1
+      (11 - M)  * s1_COLA1 +  // first step - November 1 2024 // 6
+      (1 + M)   * s1_COLA2 +  // November 1 2024 – second step // 6
+      (6 - M)   * s2_COLA2 +  // second step – June 1 2025 // 1
+      5         * s2_COLA3 +  // June 1 – November 1 2025
+      (1 + M)   * s2_COLA4 +  // November 1 2025 – third step // 6
+      (7 - M)   * s3_COLA4    // third step - July 1 2026 // 2
+    }
+     else if (G) { // example: step anniversary is June 1
+      console.log(`case G`);
+      lifeOfContractTotalWithCOLAs =
+      (M - 4)     * s0_COLA1 +  // April 1 – first step // 2
+      (11 - M)    * s1_COLA1 +  // first step - November 1 2024 // 5
+      7           * s1_COLA2 +  // November 1 2024 – June 1 2025
+      5           * s2_COLA3 +  // June 1 – November 1 2025
+      (1 + M)     * s2_COLA4 +  // November 1 2025 – third step // 7
+      (7 - M)     * s3_COLA4    // third step - July 1 2026 // 1
+    }
+    else if (H) { // example: step anniversary is July 1
+      console.log(`case H`);
+      lifeOfContractTotalWithCOLAs =
+      (M - 4)     * s0_COLA1 +  // April 1 – first step // 3
+      (11 - M)    * s1_COLA1 +  // first step - November 1 2024 // 4
+      7           * s1_COLA2 +  // November 1 2024 – June 1 2025
+      (M - 6)     * s1_COLA3 +  // June 1 2025 - second step // 1
+      (11 - M)    * s2_COLA3 +  // second step – November 1 2025 // 4
+      8         * s2_COLA4 +  // November 1 2025 – July 1 2026
+    };
+  console.log(`lifeOfContractTotalWithCOLAs: ${lifeOfContractTotalWithCOLAs}`);
+
+  const totalValueOfContract = lifeOfContractTotalWithCOLAs - lifeOfContractTotalWithoutCOLAs + 1500;  
+
   // generate results string and message
   function resultsString() {
     // set variables
     let itPos = userObj['itPos'] === 'Yes' ? true : false;
     console.log(`itPos: ${itPos}`);
-    let threeStepMonths = ["April", "May", "June"];
-    let numberOfSteps = threeStepMonths.indexOf(userMOH) > -1 ? 3 : 2;
-    console.log(`numberOfSteps: ${numberOfSteps}`);
-    const r = /\d+/;
-    let stepNumberEquivalent = (stepString) => (stepString.match(r));
-    console.log(`stepNumberEquivalent: ${stepNumberEquivalent}`);
+
+    
+    
     let userEndStep = `Step ${stepNumberEquivalent + numberOfSteps}`;
     console.log(`userEndStep: ${userEndStep}`);
     let monthlyPayAfterFinalCOLA = Object.keys(userObj).find(key => (key.includes(userEndStep) && key.includes('COLA4')));
     console.log(`monthlyPayAfterFinalCOLA: ${monthlyPayAfterFinalCOLA}`);
 
+    if (itPos) {
+      return `<p style="max-width: 600px; margin: auto auto 20px auto;"><ul style="max-width: 600px; margin: auto;"><li style="margin-bottom:15px;">${genericResultsString}</li></ul></p>`
+    } else {
+      return `<p style="max-width: 600px; margin: auto auto 20px auto;"><ul style="max-width: 600px; margin: auto;"><li style="margin-bottom:15px;">If you are ${userTitle} on ${userStep}, your current monthly base salary is <span class="purplebold">$${currentPayRate.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>.</li><li style="margin-bottom:15px;">By the end of the contract, your monthly pay will be <span class="purplebold">$${monthlyPayAfterFinalCOLA.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>, for a total of <span class="purplebold">$${lifeOfContractTotal.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span> more in your pocket by July 2026.</li><li style="margin-bottom:15px;">In addition, you will receive a $1,500 one-time bonus payment in April 2024.</li></ul></p>`
+    }
 
-    return `<p style="max-width: 600px; margin: auto auto 20px auto;">
-              <ul style="max-width: 600px; margin: auto;">
-                <li style="margin-bottom:15px;">
-                  If you are ${userTitle} on ${userStep}, your current monthly base salary is 
-                  <span class="purplebold">$${currentPayRate.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>. 
-                </li>
-                <li style="margin-bottom:15px;">
-                  By the end of the contract, your monthly pay will be 
-                  <span class="purplebold">$${monthlyPayAfterFinalCOLA.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
-                   , for a total of 
-                  <span class="purplebold">$${lifeOfContractTotal.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
-                   more in your pocket by June 2026.
-                </li>
-                <li style="margin-bottom:15px;">
-                   In addition, you will receive a $1,500 one-time bonus payment in April 2024.
-                </li>
-              </ul>
-            </p>`
+
+    
 
   // On reload, reload page
   function handleReload() {
@@ -7236,43 +8076,43 @@ document.addEventListener("DOMContentLoaded", function(){
     window.location.reload();
   }
 
-  function validateHPW() {
-    console.log('validateHPW');
-    var reg = /^\d+$/;
-    if (!userHours || userHours < 1 || userHours > 140 || !reg.test(userHours) ) {
-      console.log('hpwInvalid');
-      hpwEl.classList.add("invalid");
-      hPWValEl.setAttribute("style", "display:block;");
-      hPWValEl.innerHTML = `${trans['valHPW'][userLangCode]}`;
-      submit.setAttribute("disabled", "disabled");
-      startOver.setAttribute("style", "display:block;");
-      return false;
-    } else {
-      console.log('hpwValid');
-      hpwEl.classList.remove("invalid");
-      hPWValEl.innerHTML = "";
-      hPWValEl.setAttribute("style", "display:none;");
-      submit.removeAttribute("disabled");
-      startOver.setAttribute("style", "display:none;");
-      return true;
-    }
-  }
+  // function validateHPW() {
+  //   console.log('validateHPW');
+  //   var reg = /^\d+$/;
+  //   if (!userHours || userHours < 1 || userHours > 140 || !reg.test(userHours) ) {
+  //     console.log('hpwInvalid');
+  //     hpwEl.classList.add("invalid");
+  //     hPWValEl.setAttribute("style", "display:block;");
+  //     hPWValEl.innerHTML = `${trans['valHPW'][userLangCode]}`;
+  //     submit.setAttribute("disabled", "disabled");
+  //     startOver.setAttribute("style", "display:block;");
+  //     return false;
+  //   } else {
+  //     console.log('hpwValid');
+  //     hpwEl.classList.remove("invalid");
+  //     hPWValEl.innerHTML = "";
+  //     hPWValEl.setAttribute("style", "display:none;");
+  //     submit.removeAttribute("disabled");
+  //     startOver.setAttribute("style", "display:none;");
+  //     return true;
+  //   }
+  // }
 
   // On submit, validate inputs. if valid, hide instructions and display results
   function handleSubmit(e) {
     e.preventDefault();
-    let valid;
-    valid = validateHPW();
-    console.log(valid);
-    if (valid) {
-      console.log('valid', valid);
+    // let valid;
+    // valid = validateHPW();
+    // console.log(valid);
+    // if (valid) {
+    //   console.log('valid', valid);
       submit.setAttribute("style", "display:none;");
       startOver.setAttribute("style", "display:block;");
       instructions.setAttribute("style", "height: 0; display:none;");
       inputs.setAttribute("style", "height: 0; display:none;");
       message.setAttribute("style", "display:block;");
       results.innerHTML = resultsString();
-    }
+    // }
   }
 
   submit.addEventListener("click", handleSubmit);
@@ -7280,7 +8120,7 @@ document.addEventListener("DOMContentLoaded", function(){
   hpwEl.addEventListener("change", hoursChange);
   hpwEl.addEventListener("blur", validateHPW);
   
-   // custom select styling
+  // custom select styling
 
   let x, i, j, l, ll, selElmnt, a, b, c;
   /* Look for any elements with the class "custom-select": */

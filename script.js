@@ -16369,16 +16369,16 @@ let userStartStepRaw = '';
 let userStartStep = '';
 let userStartStepValue = 0;
 let userMOH = '';
-let lifeOfContractTotal = 0;
 let userObj = {};
 let itPos = false;
+let toppedOut = false;
 let s0, s1, s2, s3;
 let A, B, C, D, E, F, G, H, I, J, K, M;
 let currentMonthlyRate;
 let lifeOfContractTotalWithCOLAs = 0;
 let lifeOfContractTotalWithoutCOLAs = 0;
 let steps = [];
-const genericResultsString = "By the end of the contract, you will receive a minimum raise of 15.8% in COLAs by June 2026, not including any merit-based increases. In addition, you will receive a $1,500 one-time bonus payment in April.";
+const genericResultsString = "By the end of the contract, you will receive a minimum raise of <span class='purplebold'>15.8%</span> in COLAs by July 2026, not including any merit-based increases.</li><li style='margin-bottom:15px;'>In addition, you will receive a <span class='purplebold'>$1,500</span> one-time bonus payment in April.";
 const monthsArray = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
 
@@ -16418,6 +16418,29 @@ document.addEventListener("DOMContentLoaded", function(){
     monthEl.options[monthEl.options.length] = new Option(item)
   });
 
+  // ** HELPER FUNCTIONS ** //
+
+  // test if string begins with a vowel
+  function testVowels(str) {
+    const r = new RegExp('^[aeiou].*', 'i');
+    return r.test(str);
+  }
+
+  // clean currency strings
+  function clean(str) {
+    if (typeof(str) === "number") {
+      return str;
+    } else {
+      return parseFloat(str.replace(/[^0-9]/g, ""));
+    }
+  }
+
+  // extract a number from a step string
+  const r = /\d+/;
+  function stepNumberEquivalent(stepString){
+    return stepString.match(r)
+  }
+
   // find userObj
   function findUserObj() {
     console.log(`userTitle: ${userTitle}`);
@@ -16425,14 +16448,17 @@ document.addEventListener("DOMContentLoaded", function(){
     if (!userObj) { userObj = {}; }
     console.log('userObj');
     console.log(userObj);
+    itPos = (userObj.itPos === 'Yes');
+    console.log(`itPos: ${itPos}`);
   }
 
   // load steps into dropdown
   function loadSteps() {
     console.log('loadSteps');
+    steps = [];
     // get list of steps from lookup
     Object.keys(userObj).forEach(key => {
-      if (key.includes('Step') && key.length < 8) {
+      if (key.includes('Step') && key.length < 8 && userObj[key] != 0 && userObj[key] != "$0") {
         steps.push(`${key}: ${userObj[key]}`);
       }
     });
@@ -16441,7 +16467,17 @@ document.addEventListener("DOMContentLoaded", function(){
     steps.forEach(item => {
       stepEl.options[stepEl.options.length] = new Option(item)
     }); 
-    replaceSelect(stepEl, stepCustom, false);
+    if (stepEl.options.length > 1) {
+      replaceSelect(stepEl, stepCustom, false);
+      stepCustom.style.display = 'block';
+      monthCustom.style.display = 'block';
+    } else {
+      stepEl.style.display = 'none';
+      stepCustom.style.display = 'none';
+      monthEl.style.display = 'none';
+      monthCustom.style.display = 'none';
+    }
+    
   }
 
   // listen for changes to job title
@@ -16462,6 +16498,15 @@ document.addEventListener("DOMContentLoaded", function(){
     console.log(`userStartStep: ${userStartStep}`);
     userStartStepValue = userStartStepRaw.split(':')[1].substring(1);
     console.log(`userStartStepValue: ${userStartStepValue}`);
+    if (stepNumberEquivalent(userStartStep) == 10) {
+      toppedOut = true;
+      monthEl.style.display = 'none';
+      monthCustom.style.display = 'none';
+    } else {
+      toppedOut = false;
+      monthCustom.style.display = 'block';
+    }
+    console.log(`toppedOut: ${toppedOut}`);
     currentMonthlyRate = clean(userStartStepValue);
     // console.log(`currentMonthlyRate: ${currentMonthlyRate}`);
   }
@@ -16471,23 +16516,6 @@ document.addEventListener("DOMContentLoaded", function(){
     console.log('MOHChange');
     userMOH = e.target.value;
     console.log(`userMOH: ${userMOH}`);
-  }
-
-  // clean currency strings
-  function clean(str) {
-    if (typeof(str) === "number") {
-      return str;
-    } else {
-      return parseFloat(str.replace(/[^0-9]/g, ""));
-    }
-  }
-
-  // extract a number from a step string
-  const r = /\d+/;
-  function stepNumberEquivalent(stepString){
-    console.log(`stepString: ${stepString}`);
-    console.log(`stepNumberEquivalent: ${stepString.match(r)}`);
-    return stepString.match(r)
   }
 
 
@@ -16527,55 +16555,72 @@ document.addEventListener("DOMContentLoaded", function(){
     A = (
       M > 4 ? M - 4 : 9 + M
     ); // # months between now and first step
-    console.log(`# months between now and first step: ${A}`);
     B = (
       M < 7 ? 7 - M : (13 - M) + 6
       ); // # months between second step and July 1 2026
-    console.log(`# months between second step and July 1 2026: ${B}`);
     C = (
       F ? 7 - M : 0
       ); // # months between third step and July 1 2026
-    console.log(`# months between third step and July 1 2026: ${C}`);
-
   }
   
 
   // calculate monthly rate at each step without COLAs
 
   // find user object in currentSalaryRange by SalaryRange
-  async function findUserSalaryRange() {
+  function findUserSalaryRange() {
     const userSalaryRange = userObj.salaryRange;
     console.log(`userSalaryRange: ${userSalaryRange}`);
 
     const userCurrentSalaryObj = currentSalaryRange.find((item) => item['Salary Range'].toString() === userSalaryRange.toString());
     console.log(userCurrentSalaryObj);
-
+    if (toppedOut) {
+      return;
+    }
     I = clean(userCurrentSalaryObj[`Step ${s1}`]); // monthly rate at s1 (baseline without COLAs)
     J = clean(userCurrentSalaryObj[`Step ${s2}`]); // monthly rate at s2 (baseline without COLAs)
     K = clean(userCurrentSalaryObj[`Step ${s3}`]); // monthly rate at s3 (baseline without COLAs)
-    console.log(`monthly rate at s1: ${I}`);
-    console.log(`monthly rate at s2: ${J}`);
-    console.log(`monthly rate at s3: ${K}`);
   }
 
   // calculate lOCTotal without COLAs
-  async function lOCTotalWithoutCOLAs() {
-    calculateSteps();
-    anniversayDateCondition();
-    await findUserSalaryRange();
-    console.log(`parseInt(currentMonthlyRate) * A: ${parseInt(currentMonthlyRate) * A}`);
-    console.log(I,J,K,A,B,C);
-    console.log(`I * 12: ${I * 12}`);
-    console.log(`J * B: ${J * B}`);
-    console.log(`K * C: ${K * C}`);
-    lifeOfContractTotalWithoutCOLAs = (parseInt(currentMonthlyRate) * A) + (I * 12) + (J * B) + (K * C);
-    console.log(`lifeOfContractTotalWithoutCOLAs: ${lifeOfContractTotalWithoutCOLAs}`);
+  function lOCTotalWithoutCOLAs() {
+    if (toppedOut) {
+      console.log('toppedOut');
+      findUserSalaryRange();
+      console.log('no step increases during life of contract.')
+      console.log(`currentMonthlyRate (${parseInt(currentMonthlyRate)}) * 27: ${parseInt(currentMonthlyRate) * 27}`);
+      lifeOfContractTotalWithoutCOLAs = parseInt(currentMonthlyRate) * 27;
+      console.log(`lifeOfContractTotalWithoutCOLAs: ${lifeOfContractTotalWithoutCOLAs}`);
+    } else {
+      calculateSteps();
+      anniversayDateCondition();
+      findUserSalaryRange();
+      console.log(`currentMonthlyRate (${parseInt(currentMonthlyRate)}) * months between now and first step (${A}): ${parseInt(currentMonthlyRate) * A}`);
+      console.log(`monthly rate at next step up (${I}) * 12: ${I * 12}`);
+      console.log(`monthly rate at second step up (${J}) * months between second step and July 1 2026 (${B}): ${J * B}`);
+      console.log(`monthly rate at third step up (${K}) * months between third step and July 1 2026 (${C}): ${K * C}`);
+      lifeOfContractTotalWithoutCOLAs = (parseInt(currentMonthlyRate) * A) + (I * 12) + (J * B) + (K * C);
+      console.log(`lifeOfContractTotalWithoutCOLAs: ${lifeOfContractTotalWithoutCOLAs}`);
+    }
+    
   }
   
 
   
 
-  function lOCTotalWITHCOLAs() {
+  function lOCTotalWITHCOLAs() {  
+    if (toppedOut) { // doesn't matter when step anniversary is; no steps
+      console.log('case: toppedOut');
+      lifeOfContractTotalWithCOLAs =
+        7           * clean(userObj[`Step 10 COLA1`]) +  // April 1 – November 1 2024
+        7           * clean(userObj[`Step 10 COLA2`]) +  // November 1 2024 – June 1 2025
+        5           * clean(userObj[`Step 10 COLA3`]) +  // June 1 – November 1 2025
+        8           * clean(userObj[`Step 10 COLA4`]);  // November 1 2025 – July 1 2026
+        console.log (`7 months @${clean(userObj[`Step 10 COLA1`])}`);
+        console.log (`7 months @${clean(userObj[`Step 10 COLA2`])}`);
+        console.log (`5 months @${clean(userObj[`Step 10 COLA3`])}`);
+        console.log (`8 months @${clean(userObj[`Step 10 COLA4`])}`);
+        return;
+      }
     const s0_COLA1 = clean(userObj[`Step ${s0} COLA1`]);
     const s0_COLA2 = clean(userObj[`Step ${s0} COLA2`]);
     const s1_COLA1 = clean(userObj[`Step ${s1} COLA1`]);
@@ -16585,12 +16630,10 @@ document.addEventListener("DOMContentLoaded", function(){
     const s2_COLA2 = clean(userObj[`Step ${s2} COLA2`]);
     const s2_COLA3 = clean(userObj[`Step ${s2} COLA3`]);
     const s2_COLA4 = clean(userObj[`Step ${s2} COLA4`]);
-    const s3_COLA4 = clean(userObj[`Step ${s0} COLA4`]);
-    console.log('****************');
-    console.log(s0_COLA1, s0_COLA2, s1_COLA1, s1_COLA2, s1_COLA3, s1_COLA4, s2_COLA2, s2_COLA3, s2_COLA4, s3_COLA4);
+    const s3_COLA4 = clean(userObj[`Step ${s3} COLA4`]);
 
     if (D) { // example: step anniversary is December 1
-        console.log(`case D`);
+        console.log(`case D: anniversary between November 1 and December 31`);
         lifeOfContractTotalWithCOLAs =
           7               * s0_COLA1 +  // April 1 – November 1 2024
           (M - 11)        * s0_COLA2 +  // November 1 2024 – first step // 1
@@ -16598,9 +16641,15 @@ document.addEventListener("DOMContentLoaded", function(){
           5               * s1_COLA3 +  // June 1 – November 1 2025
           (M - 11)        * s1_COLA4 +  // November 1 2025 – second step // 1
           (6 + (13 - M))  * s2_COLA4;    // second step – July 1 2026 // 7 
+          console.log (`7 months @${s0_COLA1}`);
+          console.log (`${M - 11} months @${s0_COLA2}`);
+          console.log (`${5 + (13 - M)} months @${s1_COLA2}`);
+          console.log (`5 months @${s1_COLA3}`);
+          console.log (`${M - 11} months @${s1_COLA4}`);
+          console.log (`${6 + (13 - M)} months @${s2_COLA4}`);
       }
       else if (E) { // example: step anniversary is March 1
-        console.log(`case E`);
+        console.log(`case E: anniversary between January 1 and March 30`);
         lifeOfContractTotalWithCOLAs =
         7         * s0_COLA1 +  // April 1 – November 1 2024
         (1 + M)   * s0_COLA2 +  // November 1 2024 – first step // 4
@@ -16608,6 +16657,12 @@ document.addEventListener("DOMContentLoaded", function(){
         5         * s2_COLA3 +  // June 1 – November 1 2025
         (1 + M)   * s2_COLA4 +  // November 1 2025 – second step // 4
         (7 - M)   * s3_COLA4;    // second step - July 1 2026 // 4
+        console.log (`7 months @${s0_COLA1}`);
+        console.log (`${1 + M} months @${s0_COLA2}`);
+        console.log (`${6 - M} months @${s1_COLA2}`);
+        console.log (`5 months @${s2_COLA3}`);
+        console.log (`${1 + M} months @${s2_COLA4}`);
+        console.log (`${7 - M} months @${s3_COLA4}`);
       }
       else if (F) { // example: step anniversary is May 1
         console.log(`case F`);
@@ -16619,6 +16674,13 @@ document.addEventListener("DOMContentLoaded", function(){
         5         * s2_COLA3 +  // June 1 – November 1 2025
         (1 + M)   * s2_COLA4 +  // November 1 2025 – third step // 6
         (7 - M)   * s3_COLA4;    // third step - July 1 2026 // 2
+        console.log (`${M - 4} @${s0_COLA1}`);
+        console.log (`${11 - M} months @${s1_COLA1}`);
+        console.log (`${1 + M} months @${s1_COLA2}`);
+        console.log (`${6 - M} months @${s2_COLA2}`);
+        console.log (`5 months @${s2_COLA3}`);
+        console.log (`${1 + M} months @${s2_COLA4}`);
+        console.log (`${7 - M} months @${s3_COLA4}`);
       }
        else if (G) { // example: step anniversary is June 1
         console.log(`case G`);
@@ -16629,6 +16691,12 @@ document.addEventListener("DOMContentLoaded", function(){
         5           * s2_COLA3 +  // June 1 – November 1 2025
         (1 + M)     * s2_COLA4 +  // November 1 2025 – third step // 7
         (7 - M)     * s3_COLA4;    // third step - July 1 2026 // 1
+        console.log (`${M - 4} @${s0_COLA1}`);
+        console.log (`${11 - M} months @${s1_COLA1}`);
+        console.log (`7 months @${s1_COLA2}`);
+        console.log (`5 months @${s2_COLA3}`);
+        console.log (`${1 + M} months @${s2_COLA4}`);
+        console.log (`${7 - M} months @${s3_COLA4}`);
       }
       else if (H) { // example: step anniversary is July 1
         console.log(`case H`);
@@ -16639,6 +16707,12 @@ document.addEventListener("DOMContentLoaded", function(){
         (M - 6)     * s1_COLA3 +  // June 1 2025 - second step // 1
         (11 - M)    * s2_COLA3 +  // second step – November 1 2025 // 4
         8           * s2_COLA4;  // November 1 2025 – July 1 2026
+        console.log (`${M - 4} @${s0_COLA1}`);
+        console.log (`${11 - M} months @${s1_COLA1}`);
+        console.log (`7 months @${s1_COLA2}`);
+        console.log (`${M - 6} months @${s1_COLA3}`);
+        console.log (`${11 - M} months @${s2_COLA3}`);
+        console.log (`8 months @${s2_COLA4}`);
       } else {
         console.log('no step anniversary case determined');
       }
@@ -16651,28 +16725,48 @@ document.addEventListener("DOMContentLoaded", function(){
   // generate results string and message
   function resultsString() {
     // set variables
-    itPos = (userObj.itPos === 'Yes');
-    console.log(`itPos: ${itPos}`);
+    const article = (
+      testVowels(userTitle) ? "an" : "a"
+      );
 
-    
     let numberOfSteps = (
-      (F || G) ? 3 : 2
+      toppedOut ? 0 : (F || G) ? 3 : 2
       );
     console.log(`numberOfSteps: ${numberOfSteps}`);
-    let userEndStep = `Step ${parseInt(stepNumberEquivalent(userStartStep)) + parseInt(numberOfSteps)}`;
+    let userEndStepRaw = parseInt(stepNumberEquivalent(userStartStep)) + parseInt(numberOfSteps);
+    if (userEndStepRaw > 10) {userEndStepRaw = 10};
+    let userEndStep = `Step ${userEndStepRaw}`;
     console.log(`userEndStep: ${userEndStep}`);
-    let monthlyPayAfterFinalCOLA = Object.keys(userObj).find((key) => (key.includes(userEndStep) && key.includes('COLA4')));
+    let monthlyPayAfterFinalCOLA = clean(userObj[Object.keys(userObj).find((key) => (key.includes(userEndStep) && key.includes('COLA4')))]).toLocaleString();
     console.log(`monthlyPayAfterFinalCOLA: ${monthlyPayAfterFinalCOLA}`);
 
     lOCTotalWithoutCOLAs();
     lOCTotalWITHCOLAs();
-    const totalValueOfContract = lifeOfContractTotalWithCOLAs - lifeOfContractTotalWithoutCOLAs + 1500;  
+    const totalValueOfContract = lifeOfContractTotalWithCOLAs - lifeOfContractTotalWithoutCOLAs;  
+    console.log(`lifeOfContractTotalWithCOLAs ($${lifeOfContractTotalWithCOLAs.toLocaleString()}) - lifeOfContractTotalWithoutCOLAs ($${lifeOfContractTotalWithoutCOLAs.toLocaleString()}) = totalValueOfContract (without bonus): $${totalValueOfContract.toLocaleString()}`);
+    console.log(`total value of contract plus bonus = $${(totalValueOfContract + 1500).toLocaleString()}`);
 
-    if (itPos) {
-      return `<p style="max-width: 600px; margin: auto auto 20px auto;"><ul style="max-width: 600px; margin: auto;"><li style="margin-bottom:15px;">${genericResultsString}</li></ul></p>`;
-    } else {
-      return `<p style="max-width: 600px; margin: auto auto 20px auto;"><ul style="max-width: 600px; margin: auto;"><li style="margin-bottom:15px;">If you are ${userTitle} on ${userStartStep}, your current monthly base salary is <span class="purplebold">$${currentMonthlyRate.toLocaleString()}</span>.</li><li style="margin-bottom:15px;">By the end of the contract, your monthly pay will be <span class="purplebold">$${monthlyPayAfterFinalCOLA.toLocaleString()}</span>, for a total of <span class="purplebold">$${lifeOfContractTotal.toLocaleString()}</span> more in your pocket by July 2026.</li><li style="margin-bottom:15px;">In addition, you will receive a $1,500 one-time bonus payment in April 2024.</li></ul></p>`;
-    }
+    return `
+      <p style="max-width: 600px; margin: auto auto 20px auto;">
+        <ul style="max-width: 600px; margin: auto;">
+          <li style="margin-bottom:15px;">
+            If you are ${article} ${userTitle} on ${userStartStep}, your current monthly base salary is 
+            <span class="purplebold">$${currentMonthlyRate.toLocaleString()}</span>.
+          </li>
+          <li style="margin-bottom:15px;">
+            By the end of the contract, your monthly pay will be 
+            <span class="purplebold">$${monthlyPayAfterFinalCOLA.toLocaleString()}</span>.
+          </li>
+          <li style="margin-bottom:15px;">
+            In addition, you will receive a <span class="purplebold">$1,500</span> one-time bonus payment in April 2024.
+          </li>
+          <li>
+            The four COLAs plus the one-time bonus add up to
+            <span class="purplebold">$${(totalValueOfContract + 1500).toLocaleString()}</span>
+            more in your pocket by July 2026.
+          </li>        
+        </ul>
+       </p>`;
   }
 
 
@@ -16714,12 +16808,17 @@ document.addEventListener("DOMContentLoaded", function(){
     // console.log(valid);
     // if (valid) {
     //   console.log('valid', valid);
-      submit.setAttribute("style", "display:none;");
-      startOver.setAttribute("style", "display:block;");
-      instructions.setAttribute("style", "height: 0; display:none;");
-      inputs.setAttribute("style", "height: 0; display:none;");
-      message.setAttribute("style", "display:block;");
+    submit.setAttribute("style", "display:none;");
+    startOver.setAttribute("style", "display:block;");
+    instructions.setAttribute("style", "height: 0; display:none;");
+    inputs.setAttribute("style", "height: 0; display:none;");
+    message.setAttribute("style", "display:block;");
+    console.log(`submit itPos: ${itPos}`);
+    if (itPos) {
+      results.innerHTML = `<p style="max-width: 600px; margin: auto auto 20px auto;"><ul style="max-width: 600px; margin: auto;"><li style="margin-bottom:15px;">${genericResultsString}</li></ul></p>`;
+    } else {
       results.innerHTML = resultsString();
+    }
     // }
   }
 

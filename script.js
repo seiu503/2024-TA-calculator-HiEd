@@ -16583,25 +16583,31 @@ document.addEventListener("DOMContentLoaded", function(){
 
   // calculate lOCTotal without COLAs
   function lOCTotalWithoutCOLAs() {
-    if (toppedOut) {
-      console.log('toppedOut');
-      findUserSalaryRange();
-      console.log('no step increases during life of contract.')
-      console.log(`currentMonthlyRate (${parseInt(currentMonthlyRate)}) * 27: ${parseInt(currentMonthlyRate) * 27}`);
-      lifeOfContractTotalWithoutCOLAs = parseInt(currentMonthlyRate) * 27;
-      console.log(`lifeOfContractTotalWithoutCOLAs: ${lifeOfContractTotalWithoutCOLAs}`);
-    } else {
-      calculateSteps();
-      anniversayDateCondition();
-      findUserSalaryRange();
-      console.log(`currentMonthlyRate (${parseInt(currentMonthlyRate)}) * months between now and first step (${A}): ${parseInt(currentMonthlyRate) * A}`);
-      console.log(`monthly rate at next step up (${I}) * 12: ${I * 12}`);
-      console.log(`monthly rate at second step up (${J}) * months between second step and July 1 2026 (${B}): ${J * B}`);
-      console.log(`monthly rate at third step up (${K}) * months between third step and July 1 2026 (${C}): ${K * C}`);
-      lifeOfContractTotalWithoutCOLAs = (parseInt(currentMonthlyRate) * A) + (I * 12) + (J * B) + (K * C);
-      console.log(`lifeOfContractTotalWithoutCOLAs: ${lifeOfContractTotalWithoutCOLAs}`);
-    }
-    
+    // if (toppedOut) {
+    //   console.log('toppedOut');
+    //   findUserSalaryRange();
+    //   console.log('no step increases during life of contract.')
+    //   console.log(`currentMonthlyRate (${parseInt(currentMonthlyRate)}) * 27: ${parseInt(currentMonthlyRate) * 27}`);
+    //   lifeOfContractTotalWithoutCOLAs = parseInt(currentMonthlyRate) * 27;
+    //   console.log(`lifeOfContractTotalWithoutCOLAs: ${lifeOfContractTotalWithoutCOLAs}`);
+    // } else {
+    //   calculateSteps();
+    //   anniversayDateCondition();
+    //   findUserSalaryRange();
+    //   console.log(`currentMonthlyRate (${parseInt(currentMonthlyRate)}) * months between now and first step (${A}): ${parseInt(currentMonthlyRate) * A}`);
+    //   console.log(`monthly rate at next step up (${I}) * 12: ${I * 12}`);
+    //   console.log(`monthly rate at second step up (${J}) * months between second step and July 1 2026 (${B}): ${J * B}`);
+    //   console.log(`monthly rate at third step up (${K}) * months between third step and July 1 2026 (${C}): ${K * C}`);
+    //   lifeOfContractTotalWithoutCOLAs = (parseInt(currentMonthlyRate) * A) + (I * 12) + (J * B) + (K * C);
+    //   console.log(`lifeOfContractTotalWithoutCOLAs: ${lifeOfContractTotalWithoutCOLAs}`);
+    // }
+
+    // calculating lOCTotalWithoutCOLAs without steps -- just current monthly rate @27 monhts
+    calculateSteps();
+    anniversayDateCondition();
+    findUserSalaryRange();
+    lifeOfContractTotalWithoutCOLAs = currentMonthlyRate * 27;
+    console.log(`lifeOfContractTotalWithoutCOLAs: $${lifeOfContractTotalWithoutCOLAs.toLocaleString()} (27 months @$${currentMonthlyRate})`);
   }
   
 

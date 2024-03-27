@@ -16730,14 +16730,16 @@ document.addEventListener("DOMContentLoaded", function(){
 
   // generate results string and message
   function resultsString() {
+    anniversayDateCondition();
     // set variables
     const article = (
       testVowels(userTitle) ? "an" : "a"
       );
 
     let numberOfSteps = (
-      toppedOut ? 0 : (F || G) ? 3 : 2
+      toppedOut ? 0 : (!!F || !!G) ? 3 : 2
       );
+    console.log(`D: ${D}, E: ${E}, F: ${F}, G: ${G}, H: ${H}`);
     console.log(`numberOfSteps: ${numberOfSteps}`);
     let userEndStepRaw = parseInt(stepNumberEquivalent(userStartStep)) + parseInt(numberOfSteps);
     if (userEndStepRaw > 10) {userEndStepRaw = 10};
